@@ -15,14 +15,25 @@ module Npush
             '  "port": "80"' + "\n"+
             '}'
           end
+          system 'gksu npm install'
           #system 'heroku create ' + @reponame
         end
+        
+        source_root File.expand_path('.', __FILE__)
+        copy_file "socket.io.min.js", "vendor/assets/javascripts/socket.io.min.js"
+        
         inside "config/initializers" do
           create_file 'npush.rb' do
             "unless Rails.env.production?\n"+
             "  ENV['npush_server'] = '" + @npush_server + "'\n"+
             "  ENV['npush_secret'] = '" + @npush_secret + "'\n"+
             "end\n"
+          end
+        end
+        
+        inside "app/assets/javascripts" do
+          create_file 'npush.js' do
+            "window.npush = io.connect('" + @npush_server + "')\n"
           end
         end
       end

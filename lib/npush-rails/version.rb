@@ -1,3 +1,3 @@
 module Npush
-  VERSION = "0.0.43"
+  VERSION = "0.0.51"
 end
