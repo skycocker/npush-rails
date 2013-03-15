@@ -19,9 +19,6 @@ module Npush
           #system 'heroku create ' + @reponame
         end
         
-        source_root File.expand_path('.', __FILE__)
-        copy_file "socket.io.min.js", "vendor/assets/javascripts/socket.io.min.js"
-        
         inside "config/initializers" do
           create_file 'npush.rb' do
             "unless Rails.env.production?\n"+

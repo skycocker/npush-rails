@@ -1,6 +1,10 @@
 module Npush
   require 'net/http'
   require 'uri'
+  
+  class Engine < ::Rails::Engine
+    #adds socket.io.min.js from /vendor to asset pipeline
+  end
 
   class << self
     def push(user, event, obj)
