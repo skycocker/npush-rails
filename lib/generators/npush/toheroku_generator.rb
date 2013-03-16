@@ -15,7 +15,8 @@ module Npush
             '  "port": "80"' + "\n"+
             '}'
           end
-          #system 'heroku create ' + @reponame
+          system 'heroku create ' + @reponame
+          system 'git push heroku master'
         end
         
         inside "config/initializers" do
