@@ -15,7 +15,6 @@ module Npush
             '  "port": "80"' + "\n"+
             '}'
           end
-          system 'gksu npm install'
           #system 'heroku create ' + @reponame
         end
         
@@ -28,11 +27,14 @@ module Npush
           end
         end
         
+        #to vendor :p
         inside "app/assets/javascripts" do
           create_file 'npush.js' do
             "window.npush = io.connect('" + @npush_server + "')\n"
           end
         end
+        
+        append_file 'app/assets/javascripts/application.js', '//= require socket.io.min.js'
       end
     end
   end
