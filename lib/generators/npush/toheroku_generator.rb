@@ -17,9 +17,8 @@ module Npush
             '}'
           end
           system 'heroku create ' + @reponame
-          system 'heroku config:add listen_port=' + @listen_port
-          system 'heroku config:add npush_secret=' + @npush_secret
           system 'git push heroku master'
+          system 'heroku config:add listen_port=' + @listen_port + ' npush_secret=' + @npush_secret
         end
         
         inside "config/initializers" do
