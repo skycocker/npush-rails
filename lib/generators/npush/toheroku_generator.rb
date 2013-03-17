@@ -5,7 +5,7 @@ module Npush
       @reponame = 'npush' + @appname.to_s.downcase
       @npush_secret = SecureRandom.base64
       @npush_server = 'http://' + @reponame + '.herokuapp.com/'
-      @listen_port = 80;
+      @listen_port = "80";
       
       in_root do
         git :clone => "git://github.com/skycocker/npush.git"
@@ -38,7 +38,7 @@ module Npush
           end
         end
         
-        prepend_file 'app/assets/javascripts/application.js', '//= require socket.io.min.js'
+        prepend_file 'app/assets/javascripts/application.js', "//= require socket.io.min.js\n"
       end
     end
   end
