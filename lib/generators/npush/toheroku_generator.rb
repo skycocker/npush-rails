@@ -5,6 +5,7 @@ module Npush
       @reponame = 'npush' + @appname.to_s.downcase
       @npush_secret = SecureRandom.base64
       @npush_server = 'http://' + @reponame + '.herokuapp.com/'
+      @listen_port = 80;
       
       in_root do
         git :clone => "git://github.com/skycocker/npush.git"
@@ -12,10 +13,12 @@ module Npush
           create_file 'config.json' do
             "{\n"+
             '  "npush_secret": "' + @npush_secret + '",' + "\n"+
-            '  "port": "80"' + "\n"+
+            '  "port": "' + @listen_port + '"' + "\n"+
             '}'
           end
           system 'heroku create ' + @reponame
+          system 'heroku config:add listen_port=' + @listen_port
+          system 'heroku config:add npush_secret=' + @npush_secret
           system 'git push heroku master'
         end
         
