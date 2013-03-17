@@ -4,7 +4,7 @@ module Npush
       @appname = Rails.application.class.parent_name
       @reponame = 'npush' + @appname.to_s.downcase
       @npush_secret = SecureRandom.base64
-      @npush_server = 'http://' + @reponame + '.herokuapp.com/'
+      @npush_server = 'http://' + @reponame + '.herokuapp.com'
       @listen_port = "80";
       
       in_root do
@@ -33,7 +33,7 @@ module Npush
         #to vendor :p
         inside "app/assets/javascripts" do
           create_file 'npush.js' do
-            "window.npush = io.connect('" + @npush_server + "');\n"
+            "window.npush = io.connect('" + @npush_server + ':' + @listen_port + "');\n"
           end
         end
         
