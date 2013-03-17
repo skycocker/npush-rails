@@ -35,7 +35,7 @@ module Npush
           end
         end
         
-        append_file 'app/assets/javascripts/application.js', '//= require socket.io.min.js'
+        prepend_file 'app/assets/javascripts/application.js', '//= require socket.io.min.js'
       end
     end
   end
