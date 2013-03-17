@@ -8,7 +8,7 @@ module Npush
 
   class << self
     def push(user, event, obj)
-      uri = URI.parse("http://127.0.0.1:8080")
+      uri = URI.parse(ENV['npush_server'])
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = 'application/json'
@@ -21,7 +21,7 @@ module Npush
     end
     
     def broadcast(channel, event, obj)
-      uri = URI.parse("http://127.0.0.1:8080")
+      uri = URI.parse(ENV['npush_server'])
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = 'application/json'

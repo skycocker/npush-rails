@@ -31,7 +31,7 @@ module Npush
         #to vendor :p
         inside "app/assets/javascripts" do
           create_file 'npush.js' do
-            "window.npush = io.connect('" + @npush_server + "')\n"
+            "window.npush = io.connect('" + @npush_server + "');\n"
           end
         end
         
