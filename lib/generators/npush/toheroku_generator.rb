@@ -24,7 +24,7 @@ module Npush
         inside "config/initializers" do
           create_file 'npush.rb' do
             "unless Rails.env.production?\n"+
-            "  ENV['npush_server'] = '" + @npush_server + "'\n"+
+            "  ENV['npush_server'] = '" + @npush_server + ':' + @listen_port + "'\n"+
             "  ENV['npush_secret'] = '" + @npush_secret + "'\n"+
             "end\n"
           end
