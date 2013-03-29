@@ -13,6 +13,7 @@ module Npush
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = 'application/json'
       @body = {}
+      @body["secret"] = ENV['npush_secret']
       @body["user"] = user
       @body["event"] = event
       @body["obj"] = obj
@@ -26,6 +27,7 @@ module Npush
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = 'application/json'
       @body = {}
+      @body["secret"] = ENV['npush_secret']
       @body["channel"] = channel
       @body["event"] = event
       @body["obj"] = obj
