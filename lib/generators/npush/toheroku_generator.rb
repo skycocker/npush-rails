@@ -10,15 +10,9 @@ module Npush
       in_root do
         git :clone => "git://github.com/skycocker/npush.git"
         inside "npush" do
-          create_file 'config.json' do
-            "{\n"+
-            '  "npush_secret": "' + @npush_secret + '",' + "\n"+
-            '  "port": "' + @listen_port + '"' + "\n"+
-            '}'
-          end
           system 'heroku create ' + @reponame
           system 'git push heroku master'
-          system 'heroku config:add listen_port=' + @listen_port + ' SECRET=' + @npush_secret
+          system 'heroku config:add TECHNIQUE="long-polling" SECRET=' + @npush_secret
         end
         
         inside "config/initializers" do

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    npush-rails (0.0.51)
+    npush-rails (0.0.62)
       rails (~> 3.2.11)
 
 GEM
