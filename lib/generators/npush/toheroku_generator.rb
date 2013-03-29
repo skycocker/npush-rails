@@ -24,7 +24,6 @@ module Npush
           end
         end
         
-        #to vendor :p
         inside "app/assets/javascripts" do
           create_file 'npush.js' do
             "window.npush = io.connect('" + @npush_server + ':' + @listen_port + "');\n"
@@ -32,6 +31,7 @@ module Npush
         end
         
         prepend_file 'app/assets/javascripts/application.js', "//= require socket.io.min.js\n"
+        append_file '.gitignore', "\nconfig/initializers/npush.rb\n"
       end
     end
   end

@@ -18,7 +18,9 @@ Now the coolest part - run
     
 And that's it - congratulations, you have just setup push notifications in your Rails app! :)
 
-##This generator will
+##What will this generator do?
+**It will:**
+
 1. Clone my [npush](https://github.com/skycocker/npush) repo to the root directory of your app
 2. Create your own Heroku repository named "npush(yourappname)" and push contents of cloned in the previous step repo to it, along with setting proper variables
 3. Create "npush.rb" file inside config/initializers directory of your app filled with proper settings matching set in previous step Heroku variables
@@ -63,10 +65,21 @@ Now you can use **window.npush** anywhere in your javascript as a standard [sock
     });
 
 ###Server
-####and then in your Rails controller
+####in your Rails controller
 
     Npush.broadcast "Donald Duck news feed updated", "Donald woke up", "Donald woke up at 11 am today!"
     
 ####or if you want to send push to a specific user
 
     Npush.push "user-id-goes-here", "new message", "it's still snowing in April :/"
+    
+##How to remove Npush from my app?
+Simply run
+
+    rails d npush:toheroku
+    
+**Keep in mind it will not delete the created Heroku repo. It will also leave npush folder in the root directory of your application untouched - you can**
+
+    rm -rf npush
+    
+**from the root of your app in order to get rid of it.**
