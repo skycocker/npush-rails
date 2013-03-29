@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Npush::VERSION
   s.authors     = ["Michał Siwek"]
   s.email       = ["mike21@aol.pl"]
-  s.homepage    = "TODO"
-  s.summary     = "Rails client gem for Npush server"
-  s.description = "TODO: Description of Npush."
+  s.homepage    = "https://github.com/skycocker/npush-rails"
+  s.summary     = "Rails plugin for npush"
+  s.description = "Implement push notifications in your Rails app in less than a minute"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
